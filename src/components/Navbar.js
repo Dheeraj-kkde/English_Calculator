@@ -19,10 +19,10 @@ const Navbar = (props) => {
             <Link className="nav-link" to="/about">{props.aboutText}</Link>
           </li>
         </ul>
-        <form className="d-flex">
+        {/* <form className="d-flex">
           <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
           <button className="btn btn-outline-primary" type="submit">Search</button>
-        </form>
+        </form> */}
         <div className={`form-check form-switch mx-3 text-${props.mode==='light' ?'dark' :'light'}`}>
           <input className="form-check-input" type="checkbox" role="switch" onClick={props.toggleMode} id="flexSwitchCheckDefault" />
           <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Switch Mode</label>
