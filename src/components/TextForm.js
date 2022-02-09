@@ -10,6 +10,7 @@ const TextForm = (props) => {
     // console.log("Uppercase was clicked!!!" + text);
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to uppercase","success");
   }
 
   const handleOnChange = (event) => {
@@ -20,21 +21,25 @@ const TextForm = (props) => {
   const handleDownClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted to Lowercase","success");
   }
 
   const handleClearClick = () => {
     setText('');
+    props.showAlert("Cleared the text","success");
   }
 
   const handleCopyClick = () => {
     let text = document.getElementById('myBox');
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Copied to clipboard","success");
   }
 
   const handleExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("Removed the extra spaces","success");
   }
 
   return (
