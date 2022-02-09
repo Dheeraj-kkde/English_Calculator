@@ -3,7 +3,13 @@ import './App.css';
 import Alert from './components/Alert';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-// import About from './components/About';
+import About from './components/About';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
 
@@ -20,7 +26,6 @@ function App() {
     setTimeout(()=>{
         setAlert(null);
     }, 1000)
-
 
   }
 
@@ -40,21 +45,23 @@ function App() {
 
   return (
    <>
-    <Navbar 
-      title="EC"
-      aboutText="About"
-      mode={mode}
-      toggleMode={toggleMode}
-    />
+   <Router>
+    <Navbar title="EC" aboutText="About" mode={mode} toggleMode={toggleMode} />
     <Alert alert={alert}/>
     <div className="container my-3">
-    <TextForm 
-      heading="Enter the text to analyze below"
-      mode={mode}
-      showAlert={showAlert}
-    />
-    {/* <About /> */}
+    
+          <Routes>
+                <Route exact path="/about" element={<About />} />
+               
+                <Route exact path="/" element={<TextForm 
+                    heading="Enter the text to analyze below"
+                    mode={mode}
+                    showAlert={showAlert}
+                  />}
+                />
+          </Routes>
     </div>
+    </Router>
     </>
   );
 }
