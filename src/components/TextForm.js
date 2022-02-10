@@ -30,10 +30,10 @@ const TextForm = (props) => {
   }
 
   const handleCopyClick = () => {
-    let text = document.getElementById('myBox');
-    text.select();
-    navigator.clipboard.writeText(text.value);
-    document.getSelection().removeAllRanges();
+    //let text = document.getElementById('myBox');
+    //text.select();
+    navigator.clipboard.writeText(text);
+    //document.getSelection().removeAllRanges();
     props.showAlert("Copied to clipboard","success");
   }
 
@@ -65,8 +65,8 @@ const TextForm = (props) => {
     </div>
     <div className="summaryContainer my-3" style={{color:props.mode==='light'? 'black':'white'}}>
         <h2>Your text Summary</h2>
-        <p>{text.split(" ").filter((element) => {return element.length!==0}).length} words and {text.length} characters</p>
-        <p>{0.008*(text.split(" ").filter((element) => {return element.length!==0}).length)} Mintues read</p>
+        <p>{text.split(/\s+/).filter((element) => {return element.length!==0}).length} words and {text.length} characters</p>
+        <p>{0.008*(text.split(/\s+/).filter((element) => {return element.length!==0}).length)} Mintues read</p>
         <h3>Preview</h3>
         <p>{text.length>0?text:'Nothing to preview!'}</p>
     </div>
